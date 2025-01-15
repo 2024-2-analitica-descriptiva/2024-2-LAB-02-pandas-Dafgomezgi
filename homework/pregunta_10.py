@@ -4,7 +4,9 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 `tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
 librerias de pandas para resolver las preguntas.
 """
+import pandas as pd
 
+tbl0 = pd.read_csv(r'files\input\tbl0.tsv', sep="\t")
 
 def pregunta_10():
     """
@@ -20,3 +22,12 @@ def pregunta_10():
     D                   1:2:3:5:5:7
     E   1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
+    letras_unicas = tbl0["c1"].unique()
+    dicc = {"c1":[],"c2":[]}
+    for x in sorted(letras_unicas):
+        valores = sorted(list(tbl0[tbl0["c1"] == x]["c2"]))
+        cadena_unida = ":".join(map(lambda y: str(y), valores))
+        dicc["c1"].append(x)
+        dicc["c2"].append(cadena_unida)
+    nuevo_dt = pd.DataFrame(dicc).set_index("c1")
+    return nuevo_dt
