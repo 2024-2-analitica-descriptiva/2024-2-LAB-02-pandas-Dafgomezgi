@@ -7,7 +7,7 @@ librerias de pandas para resolver las preguntas.
 
 import pandas as pd
 
-tbl0 = pd.read_csv(r'files\input\tbl0.tsv', sep="\t")
+tbl0 = pd.read_csv(r"files\input\tbl0.tsv", sep="\t")
 
 def pregunta_04():
     """
